@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         margin: "0 auto",
     },
     Card_root: {
-        minWidth: 275,
+        minWidth: 305,
         margin: theme.spacing(1),
     },
     bullet: {

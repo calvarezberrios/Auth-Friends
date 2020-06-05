@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import FriendsLogo from "../assets/images/friends_logo.png";
-import { getFriends } from '../actions/friends';
+import { getFriends, addFriend } from '../actions/friends';
 import FriendCard from './FriendCard';
 import * as MaterialUI from "../MaterialUI";
 
@@ -18,8 +18,11 @@ const Friends = props => {
     return (
         <div>
             <img src = {FriendsLogo} alt = "Friends" />
+            <MaterialUI.Button onClick = {() => dispatch(addFriend())} variant = "contained">Add New Friend</MaterialUI.Button>
+            
             {isFetching && <h3>Loading Friends...</h3>}
-
+            
+            <br /><br />
             <div className = {classes.Grid_root}>
                 <MaterialUI.Grid container spacing = {3}>
                     {!error && !isFetching ? (
