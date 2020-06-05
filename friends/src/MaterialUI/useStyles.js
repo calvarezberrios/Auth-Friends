@@ -9,7 +9,11 @@ const useStyles = makeStyles((theme) => ({
     },
     AppBar_title: {
         flexGrow: 1,
-        cursor: "pointer",
+        "& > a": {
+            margin: theme.spacing(2),
+            color: "white",
+            textDecoration: "none"
+        }
     },
     Login_root: {
         display: "flex",
@@ -31,6 +35,24 @@ const useStyles = makeStyles((theme) => ({
         color: "red",
         fontSize: "11px",
         margin: "0 auto",
+    },
+    Card_root: {
+        minWidth: 275,
+        margin: theme.spacing(1),
+    },
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+    },
+    Card_title: {
+        fontSize: 14,
+    },
+    Card_pos: {
+        marginBottom: 12,
+    },
+    Grid_root: {
+        flexGrow: 1,
     }
 }));
 

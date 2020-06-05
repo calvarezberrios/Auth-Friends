@@ -1,8 +1,4 @@
-import {
-    FETCH_LOGIN_START,
-    FETCH_LOGIN_SUCCESS,
-    FETCH_LOGIN_FAILURE
-} from "../actions/login";
+import { FETCH_FRIENDS_START, FETCH_FRIENDS_SUCCESS, FETCH_FRIENDS_FAILURE } from "../actions/friends";
 
 export const initialState = {
     friends: [],
@@ -12,23 +8,23 @@ export const initialState = {
 
 export const friendsReducer = (state = initialState, action) => {
     switch(action.type) {
-        case FETCH_LOGIN_START:
+        case FETCH_FRIENDS_START:
             return {
                 ...state,
                 isFetching: true
             };
-        case FETCH_LOGIN_SUCCESS:
-            localStorage.setItem("token", action.payload);
-
+        case FETCH_FRIENDS_SUCCESS:
             return {
                 ...state,
+                friends: action.payload,
                 isFetching: false,
+                error: ""
             };
-        case FETCH_LOGIN_FAILURE:
+        case FETCH_FRIENDS_FAILURE:
             return {
                 ...state,
-                isFetching: false,
                 friends: [],
+                isFetching: false,
                 error: action.payload
             }
         default:

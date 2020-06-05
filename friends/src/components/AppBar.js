@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as MaterialUI from "../MaterialUI";
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { toggleLoginButtonText } from "../actions/appBar";
 
@@ -13,7 +13,7 @@ const AppBar = () => {
     
     const login = () => {
 
-        if(history.location.pathname === "/friends") {
+        if(localStorage.getItem("token")) {
             history.push("/");
             dispatch(toggleLoginButtonText("/"))
             localStorage.removeItem("token");
@@ -22,18 +22,26 @@ const AppBar = () => {
         }
         
     }
+
+    useEffect(() => {
+        if(localStorage.getItem("token")) {
+            dispatch(toggleLoginButtonText("/friends"));
+            history.push("/friends");
+        }
+    }, [dispatch, history.location.pathname, history]);
     
 
     return (
         <div className = {classes.AppBar_root}>
             <MaterialUI.AppBar position = "static">
                 <MaterialUI.Toolbar>
-                    <MaterialUI.IconButton edge = "start" className = {classes.AppBar_menuButton} color = "inherit" aria-label = "menu">
+                    {/* <MaterialUI.IconButton edge = "start" className = {classes.AppBar_menuButton} color = "inherit" aria-label = "menu">
                         <MaterialUI.MenuIcon />
-                    </MaterialUI.IconButton>
+                    </MaterialUI.IconButton> */}
 
-                    <MaterialUI.Typography variant = "h6" className = {classes.AppBar_title} onClick = {() => history.push("/")}>
-                        Friends
+                    <MaterialUI.Typography variant = "h6" className = {classes.AppBar_title}>
+                        <Link to = "/">Home</Link>
+                        <Link to = "/friends">Friends</Link>
                     </MaterialUI.Typography>
 
                     <MaterialUI.Button color = "inherit" onClick = {login}>
