@@ -53,7 +53,16 @@ const useStyles = makeStyles((theme) => ({
     },
     Grid_root: {
         flexGrow: 1,
-    }
+        justifyContent: "center"
+    },
+    Grid_container: {
+        justifyContent: "center"
+    },
+    Friends_root: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+    },
 }));
 
 export default useStyles;

@@ -16,15 +16,15 @@ const Friends = props => {
 
     
     return (
-        <div>
+        <div className = {classes.Friends_root}>
             <img src = {FriendsLogo} alt = "Friends" />
             <MaterialUI.Button onClick = {() => dispatch(addFriend())} variant = "contained">Add New Friend</MaterialUI.Button>
-            
+
             {isFetching && <h3>Loading Friends...</h3>}
             
             <br /><br />
             <div className = {classes.Grid_root}>
-                <MaterialUI.Grid container spacing = {3}>
+                <MaterialUI.Grid className = {classes.Grid_container} container spacing = {3}>
                     {!error && !isFetching ? (
                         friends.map(friend => (
                             <FriendCard key = {friend.id} friend = {friend} />
