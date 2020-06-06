@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App .home_container {
+  background: url("./assets/images/home_img.jpg");
+  background-size: cover;
+  background-position: 0px -200px;
+  height: 93.2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App .home_container button {
+  margin-top: -200px;
+}
